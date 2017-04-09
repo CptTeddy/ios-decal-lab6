@@ -62,6 +62,7 @@ class LoginViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = Constants.backgroundColor
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(login), for: .touchDown)
         return button
     }()
     
@@ -95,9 +96,9 @@ class LoginViewController: UIViewController {
     
     // TODO: create an IBAction for your login button
     
-    
-    
-    
+    @IBAction func login(sender: UIButton) {
+        authenticateUser(username: view3.text, password: view4.text)
+    }
     
     /// YOU DO NOT NEED TO MODIFY ANY OF THE CODE BELOW (but you will want to use `authenticateUser` at some point)
     
