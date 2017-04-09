@@ -15,17 +15,82 @@ class LoginViewController: UIViewController {
         static let backgroundColor: UIColor = UIColor(hue: 0.5389, saturation: 1, brightness: 0.92, alpha: 1.0)
         static let invalidEmailTitle = "Invalid username or password"
         static let invalidEmailMessage = "Please try again"
+        static let labelMargin: CGFloat = 30
+        static let labelHeight: CGFloat = 200
+        static let subviewHeight: CGFloat = 250
+        static let textfieldWidth: CGFloat = 100
+        static let textfieldHeight: CGFloat = 60
+        static let buttonWidth: CGFloat = 50
+        static let buttonHeight: CGFloat = 50
     }
 
     // TODO: instantiate the views needed for your project
+    var view1: UILabel = {
+        let label = UILabel()
+        label.text = "Login View Controller"
+        label.font = UIFont(name: "Avenir", size: 36)
+        label.textColor = UIColor.white
+        label.textAlignment = NSTextAlignment.center
+        return label
+    }()
+    
+    var view2: UIView = {
+        let subview = UIView()
+        subview.backgroundColor = UIColor.white
+        subview.layer.cornerRadius = 18
+        return subview
+    }()
+    
+    var view3: UITextField = {
+        let account = UITextField()
+        account.placeholder = "account login"
+        account.backgroundColor = UIColor.white
+        return account
+    }()
+    
+    var view4: UITextField = {
+        let password = UITextField()
+        password.placeholder = "password"
+        password.backgroundColor = UIColor.white
+        return password
+    }()
+    
+    let view5: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir", size: 30)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = Constants.backgroundColor
+        button.layer.cornerRadius = 10
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.backgroundColor
         
         // TODO: Add your views either as subviews of `view` or subviews of each other using `addSubview`
-        
         // TODO: layout your views using frames or AutoLayout
+        
+        view.addSubview(view1)
+        view.addSubview(view2)
+        view2.addSubview(view3)
+        view2.addSubview(view4)
+        view2.addSubview(view5)
+        
+        view1.frame = CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height: Constants.labelHeight)
+        view1.textAlignment = NSTextAlignment.center
+        
+        view2.frame = CGRect(x: 0, y: -60, width: view.frame.width * 0.9, height: Constants.subviewHeight)
+        view2.center = view.center
+        
+        view3.frame = CGRect(x: 15, y: 0, width: view2.frame.width * 0.8, height: Constants.textfieldHeight)
+    
+        view4.frame = CGRect(x: 15, y: 80, width: view2.frame.width * 0.8, height: Constants.textfieldHeight)
+
+        view5.frame = CGRect(x: view2.frame.width * 0.2, y: view2.frame.height - 90, width: 0.6 * view2.frame.width, height: Constants.buttonHeight)
+        
+        
     }
     
     // TODO: create an IBAction for your login button
